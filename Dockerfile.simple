@@ -1,17 +1,13 @@
-# PHP Dockerfile for Render.com
+# Simplified PHP Dockerfile for Render.com (Fallback)
 FROM php:8.1-apache
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies and PHP extensions
+# Install minimal dependencies
 RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
     libzip-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql pdo_pgsql zip \
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -30,3 +26,4 @@ EXPOSE 80
 
 # Start Apache
 CMD ["apache2-foreground"]
+
