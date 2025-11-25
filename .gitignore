@@ -1,0 +1,38 @@
+# Database credentials (if using local config)
+config/db.local.php
+
+# Logs
+*.log
+error_log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Environment files
+.env
+.env.local
+
+# Composer (if used)
+vendor/
+composer.lock
+
+# Node modules (if using npm)
+node_modules/
+package-lock.json
+
