@@ -104,12 +104,12 @@ include __DIR__ . '/../includes/header.php';
             <?php else: ?>
                 <?php foreach ($courses as $c): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($c['course_code']); ?></td>
-                    <td><?php echo htmlspecialchars($c['course_name']); ?></td>
-                    <td><?php echo htmlspecialchars($c['credits']); ?></td>
-                    <td><?php echo htmlspecialchars($c['enrolled_count']); ?></td>
-                    <td><?php echo htmlspecialchars($c['capacity']); ?></td>
-                    <td>
+                    <td data-label="Course Code"><?php echo htmlspecialchars($c['course_code']); ?></td>
+                    <td data-label="Course Name"><?php echo htmlspecialchars($c['course_name']); ?></td>
+                    <td data-label="Credits"><?php echo htmlspecialchars($c['credits']); ?></td>
+                    <td data-label="Enrolled"><?php echo htmlspecialchars($c['enrolled_count']); ?></td>
+                    <td data-label="Capacity"><?php echo htmlspecialchars($c['capacity']); ?></td>
+                    <td data-label="Actions">
                         <a href="<?php echo BASE_URL; ?>views/courses.php?action=edit&id=<?php echo $c['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                         <a href="<?php echo BASE_URL; ?>views/courses.php?action=delete&id=<?php echo $c['id']; ?>" 
                            class="btn btn-sm btn-danger" 

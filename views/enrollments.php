@@ -97,16 +97,16 @@ include __DIR__ . '/../includes/header.php';
             <?php else: ?>
                 <?php foreach ($enrollments as $e): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($e['student_id']); ?></td>
-                    <td><?php echo htmlspecialchars($e['first_name'] . ' ' . $e['last_name']); ?></td>
-                    <td><?php echo htmlspecialchars($e['course_code']); ?></td>
-                    <td><?php echo htmlspecialchars($e['course_name']); ?></td>
-                    <td><?php echo htmlspecialchars($e['enrollment_date']); ?></td>
-                    <td><span class="badge badge-<?php echo $e['status'] === 'enrolled' ? 'success' : 'warning'; ?>">
+                    <td data-label="Student ID"><?php echo htmlspecialchars($e['student_id']); ?></td>
+                    <td data-label="Student Name"><?php echo htmlspecialchars($e['first_name'] . ' ' . $e['last_name']); ?></td>
+                    <td data-label="Course Code"><?php echo htmlspecialchars($e['course_code']); ?></td>
+                    <td data-label="Course Name"><?php echo htmlspecialchars($e['course_name']); ?></td>
+                    <td data-label="Enrollment Date"><?php echo htmlspecialchars($e['enrollment_date']); ?></td>
+                    <td data-label="Status"><span class="badge badge-<?php echo $e['status'] === 'enrolled' ? 'success' : 'warning'; ?>">
                         <?php echo htmlspecialchars($e['status']); ?>
                     </span></td>
-                    <td><?php echo htmlspecialchars($e['grade'] ?? 'N/A'); ?></td>
-                    <td>
+                    <td data-label="Grade"><?php echo htmlspecialchars($e['grade'] ?? 'N/A'); ?></td>
+                    <td data-label="Actions">
                         <a href="<?php echo BASE_URL; ?>views/enrollments.php?action=edit&id=<?php echo $e['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                         <a href="<?php echo BASE_URL; ?>views/enrollments.php?action=delete&id=<?php echo $e['id']; ?>" 
                            class="btn btn-sm btn-danger" 

@@ -113,15 +113,15 @@ include __DIR__ . '/../includes/header.php';
             <?php else: ?>
                 <?php foreach ($students as $s): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($s['student_id']); ?></td>
-                    <td><?php echo htmlspecialchars($s['first_name'] . ' ' . $s['last_name']); ?></td>
-                    <td><?php echo htmlspecialchars($s['email']); ?></td>
-                    <td><?php echo htmlspecialchars($s['phone'] ?? 'N/A'); ?></td>
-                    <td><?php echo htmlspecialchars($s['enrollment_date']); ?></td>
-                    <td><span class="badge badge-<?php echo $s['status'] === 'active' ? 'success' : 'warning'; ?>">
+                    <td data-label="Student ID"><?php echo htmlspecialchars($s['student_id']); ?></td>
+                    <td data-label="Name"><?php echo htmlspecialchars($s['first_name'] . ' ' . $s['last_name']); ?></td>
+                    <td data-label="Email"><?php echo htmlspecialchars($s['email']); ?></td>
+                    <td data-label="Phone"><?php echo htmlspecialchars($s['phone'] ?? 'N/A'); ?></td>
+                    <td data-label="Enrollment Date"><?php echo htmlspecialchars($s['enrollment_date']); ?></td>
+                    <td data-label="Status"><span class="badge badge-<?php echo $s['status'] === 'active' ? 'success' : 'warning'; ?>">
                         <?php echo htmlspecialchars($s['status']); ?>
                     </span></td>
-                    <td>
+                    <td data-label="Actions">
                         <a href="<?php echo BASE_URL; ?>views/students.php?action=edit&id=<?php echo $s['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                         <a href="<?php echo BASE_URL; ?>views/students.php?action=delete&id=<?php echo $s['id']; ?>" 
                            class="btn btn-sm btn-danger" 
