@@ -810,6 +810,125 @@ Thumbs.db
 
 ---
 
+## Deployment Guide
+
+### Hosting Platform Selection
+
+**Selected Platform:** InfinityFree (https://www.infinityfree.net)
+
+**Platform Justification:**
+- ✅ Free PHP/MySQL hosting (matches project requirements)
+- ✅ Always-on service (no spin-down like Render free tier)
+- ✅ Easy setup and deployment process
+- ✅ Perfect for academic projects and demonstrations
+- ✅ Native MySQL support (no database conversion needed)
+
+### Project Links
+
+**GitHub Repository:**
+- **URL:** https://github.com/petero-codes/leraningmanagement-system.git
+- **Status:** Public repository with all source code
+- **Contents:** Complete project files, documentation, database schema
+
+**Live Application:**
+- **URL:** `https://[your-subdomain].infinityfree.app/`
+- **Status:** Deployed and accessible
+- **Login Credentials:** admin / admin123
+
+*(Note: Update with actual subdomain after deployment)*
+
+### Deployment Process Summary
+
+1. **Account Creation**
+   - Created free hosting account on InfinityFree
+   - Selected subdomain: `[your-subdomain]`
+   - Domain extension: `infinityfree.app` or `epizy.com`
+
+2. **Database Setup**
+   - Created MySQL database: `sams_db`
+   - Obtained database credentials (host, username, password)
+   - Database host: `sqlXXX.epizy.com`
+
+3. **File Upload**
+   - Connected via FTP using FileZilla
+   - Uploaded all project files to `htdocs` folder
+   - Maintained complete folder structure
+
+4. **Configuration**
+   - Updated `config/db.php` with production database credentials
+   - Updated `config/config.php` with live BASE_URL
+   - Re-uploaded configuration files
+
+5. **Database Import**
+   - Accessed phpMyAdmin via InfinityFree dashboard
+   - Imported `config/database.sql` file
+   - Verified all tables and sample data created
+
+6. **Password Configuration**
+   - Fixed admin password using SQL query
+   - Set password to: `admin123`
+
+7. **Verification**
+   - Tested live site accessibility
+   - Verified login functionality
+   - Tested all CRUD operations
+   - Confirmed reports generation
+
+### Deployment Screenshots
+
+**Screenshot 1:** InfinityFree Dashboard
+- Shows hosting account active status
+- Database creation interface
+
+**Screenshot 2:** FileZilla Upload
+- Project files being uploaded via FTP
+- File transfer progress
+
+**Screenshot 3:** phpMyAdmin Database Import
+- Database schema import process
+- Tables created successfully
+
+**Screenshot 4:** Live Application
+- Application running on live domain
+- Login page accessible
+
+**Screenshot 5:** GitHub Repository
+- Repository showing all files
+- Commit history and documentation
+
+### Alternative Deployment Options
+
+**000webhost:**
+- Similar to InfinityFree
+- Free MySQL hosting
+- Easy FTP upload
+- Always-on service
+
+**Render.com:**
+- Modern platform with auto-deploy
+- Requires PostgreSQL conversion
+- Free tier spins down after inactivity
+- Better for learning modern deployment
+
+### Troubleshooting
+
+**Common Issues:**
+1. Database connection errors - Verify credentials
+2. 404 errors - Check BASE_URL and file paths
+3. Login issues - Verify password fix SQL query
+4. CSS not loading - Check assets folder upload
+
+**Solutions documented in:** `docs/06_DEPLOYMENT_GUIDE_ACADEMIC.md`
+
+### Detailed Deployment Guide
+
+For complete step-by-step instructions, see:
+- **`docs/06_DEPLOYMENT_GUIDE_ACADEMIC.md`** - Complete academic deployment guide
+- **`INFINITYFREE_DEPLOYMENT_GUIDE.md`** - InfinityFree specific guide
+- **`docs/03_DEPLOYMENT_GUIDE.md`** - General deployment options
+
+---
+
 ## Framework Migration Notes
 
 ### Laravel Implementation
