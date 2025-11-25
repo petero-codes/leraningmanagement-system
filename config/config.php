@@ -2,6 +2,7 @@
 /**
  * Application Configuration
  * Student Academic Management System
+ * Configured for InfinityFree
  */
 
 // Start session if not already started
@@ -12,7 +13,12 @@ if (session_status() === PHP_SESSION_NONE) {
 // Application settings
 define('APP_NAME', 'Student Academic Management System');
 define('APP_VERSION', '1.0.0');
-define('BASE_URL', 'http://localhost/sams/');
+
+// Base URL - UPDATE THIS WITH YOUR INFINITYFREE DOMAIN
+// Examples:
+// https://your-subdomain.infinityfree.app/
+// https://your-subdomain.epizy.com/
+define('BASE_URL', 'https://your-subdomain.infinityfree.app/');
 
 // Timezone setting
 date_default_timezone_set('America/New_York');
@@ -112,5 +118,3 @@ function getErrorMessage() {
     }
     return null;
 }
-
-
