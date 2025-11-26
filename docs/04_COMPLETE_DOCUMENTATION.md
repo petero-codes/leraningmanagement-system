@@ -814,14 +814,14 @@ Thumbs.db
 
 ### Hosting Platform Selection
 
-**Selected Platform:** InfinityFree (https://www.infinityfree.net)
+**Selected Platform:** Render.com (https://render.com)
 
 **Platform Justification:**
-- ✅ Free PHP/MySQL hosting (matches project requirements)
-- ✅ Always-on service (no spin-down like Render free tier)
-- ✅ Easy setup and deployment process
-- ✅ Perfect for academic projects and demonstrations
-- ✅ Native MySQL support (no database conversion needed)
+- ✅ Free PHP/PostgreSQL hosting
+- ✅ Modern platform with auto-deploy from GitHub
+- ✅ Free SSL certificate included
+- ✅ Good for learning modern deployment practices
+- ✅ Supports PostgreSQL database (converted from MySQL)
 
 ### Project Links
 
@@ -831,11 +831,11 @@ Thumbs.db
 - **Contents:** Complete project files, documentation, database schema
 
 **Live Application:**
-- **URL:** `https://[your-subdomain].infinityfree.app/`
+- **URL:** `https://your-app-name.onrender.com/`
 - **Status:** Deployed and accessible
 - **Login Credentials:** admin / admin123
 
-*(Note: Update with actual subdomain after deployment)*
+*(Note: Update with actual Render app URL after deployment)*
 
 ### Deployment Process Summary
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document provides a complete deployment guide for the Student Academic Management System (SAMS) to meet academic submission requirements. The project has been deployed to **InfinityFree** (free PHP/MySQL hosting) and is available via GitHub repository.
+This document provides a complete deployment guide for the Student Academic Management System (SAMS) to meet academic submission requirements. The project has been deployed to **Render.com** (free PHP/PostgreSQL hosting) and is available via GitHub repository.
 
 ---
 
@@ -19,40 +19,39 @@ This document provides a complete deployment guide for the Student Academic Mana
 - All project files
 
 ### Live Project Link
-**Live Application URL:** `https://[your-subdomain].infinityfree.app/`
+**Live Application URL:** `https://your-app-name.onrender.com/`
 
-*(Update this with your actual InfinityFree subdomain after deployment)*
-
-**Alternative Access:**
-- `https://[your-subdomain].epizy.com/`
+*(Update this with your actual Render app URL after deployment)*
 
 ---
 
-## 2. Hosting Platform: InfinityFree
+## 2. Hosting Platform: Render.com
 
 ### Platform Selection Justification
 
-**InfinityFree** was selected as the hosting platform for the following reasons:
+**Render.com** was selected as the hosting platform for the following reasons:
 
-1. **Free PHP/MySQL Hosting** ✅
+1. **Free PHP/PostgreSQL Hosting** ✅
    - Supports PHP 7.4+ (required for the project)
-   - Free MySQL database (matches project requirements)
+   - Free PostgreSQL database
    - No cost for academic projects
 
-2. **Compatibility** ✅
-   - Native MySQL support (no database conversion needed)
-   - phpMyAdmin included for database management
-   - FTP access for file uploads
+2. **Modern Platform** ✅
+   - Auto-deploy from GitHub
+   - Modern CI/CD practices
+   - Free SSL certificate included
+   - Good for learning modern deployment
 
-3. **Reliability** ✅
-   - Always-on service (no spin-down like Render free tier)
-   - Suitable for demonstrations and presentations
-   - Stable for academic submissions
+3. **Developer-Friendly** ✅
+   - Easy GitHub integration
+   - Environment variable management
+   - Automatic deployments
+   - Good documentation
 
-4. **Ease of Setup** ✅
-   - Simple FTP upload process
-   - Straightforward database configuration
-   - Quick deployment time (15-20 minutes)
+4. **Scalability** ✅
+   - Can upgrade to paid plans if needed
+   - Professional hosting environment
+   - Suitable for academic and professional projects
 
 ### Platform Comparison
 

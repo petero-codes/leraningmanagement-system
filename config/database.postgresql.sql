@@ -69,6 +69,7 @@ CREATE INDEX idx_course_id_enroll ON enrollments(course_id);
 CREATE INDEX idx_status_enroll ON enrollments(status);
 
 -- Insert default admin user (password: admin123)
+-- Using the correct password hash for 'admin123'
 INSERT INTO users (username, email, password, role) VALUES
 ('admin', 'admin@sams.edu', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin')
 ON CONFLICT (username) DO NOTHING;
