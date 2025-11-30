@@ -24,7 +24,7 @@ cd sams-laravel
 #### 2. Database Configuration
 Edit `.env` file:
 ```
-DB_CONNECTION=mysql
+DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=sams_db
@@ -156,7 +156,7 @@ $db['default'] = array(
     'username' => 'root',
     'password' => '',
     'database' => 'sams_db',
-    'dbdriver' => 'mysqli',
+    'dbdriver' => 'postgre',
     'dbprefix' => '',
     'pconnect' => FALSE,
     'db_debug' => TRUE,

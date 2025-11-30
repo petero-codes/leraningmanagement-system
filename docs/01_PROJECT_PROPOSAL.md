@@ -127,7 +127,7 @@ The project follows an iterative development approach, allowing for incremental 
 
 **Backend Technologies:**
 - **PHP 7.4+:** Server-side scripting, business logic, data processing
-- **MySQL 5.7+:** Relational database management system
+- **PostgreSQL 18+:** Relational database management system
 
 **Additional Tools:**
 - **Git:** Version control
@@ -146,7 +146,7 @@ The system follows a traditional three-tier client-server architecture:
 │  Application    │  PHP Scripts
 │      Layer      │  Business Logic
 ┌─────────────────┐
-│    Database     │  MySQL Database
+│    Database     │  PostgreSQL Database
 │      Layer      │  Data Storage
 └─────────────────┘
 ```
@@ -159,7 +159,7 @@ The system follows a traditional three-tier client-server architecture:
 **Server Side:**
 - PHP processes requests
 - Executes business logic
-- Interacts with MySQL database
+- Interacts with PostgreSQL database
 - Returns HTML/JSON responses
 
 ### Database Plan
@@ -327,7 +327,7 @@ The system follows a traditional three-tier client-server architecture:
 - System shall work on major web browsers (Chrome, Firefox, Safari, Edge)
 - System shall be responsive on mobile devices
 - System shall support PHP 7.4 and above
-- System shall work with MySQL 5.7 and above
+- System shall work with PostgreSQL 18 and above
 
 **NFR8: Portability**
 - System shall be deployable on various hosting platforms

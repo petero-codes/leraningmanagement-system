@@ -1,5 +1,0 @@
-[33me3ecf7b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Configure project for InfinityFree: Update database config for MySQL, update BASE_URL, add complete setup guide
-[33m4d62119[m Fix Docker build error: Add simplified Dockerfile without GD extension
-[33m87f5ad9[m Add Dockerfile and Docker configuration for Render deployment (PHP not available in dropdown)
-[33med0659f[m Update database config: Support both MySQL (localhost) and PostgreSQL (Render) automatically
-[33mf8f921c[m Add Render deployment files: PostgreSQL schema, Render database config, and deployment guides

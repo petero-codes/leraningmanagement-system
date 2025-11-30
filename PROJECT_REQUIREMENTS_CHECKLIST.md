@@ -214,10 +214,10 @@
 - [x] Notifications (success/error alerts)
 - [x] Summaries (dashboard statistics)
 - [x] Session messages (flash messages)
-- [x] Connected database results (all data from MySQL)
+- [x] Connected database results (all data from PostgreSQL)
 
 ### REQUIRED DATA DISPLAYS ✅
-- [x] Dynamic data from MySQL
+- [x] Dynamic data from PostgreSQL
 - [x] Updated values after CRUD
 - [x] Report summaries
 - [x] User sessions
@@ -302,7 +302,7 @@ Your project includes:
 
 ## 🚀 TO VIEW YOUR PROJECT
 
-1. **Start Apache and MySQL in XAMPP**
+1. **Start Apache and PostgreSQL in XAMPP** (or use local PostgreSQL)
 2. **Import database:** `http://localhost/phpmyadmin` → Import `config/database.sql`
 3. **Access application:** `http://localhost/sams/`
 4. **Login:** 
@@ -314,7 +314,7 @@ Your project includes:
 ## 📝 NOTES
 
 - All pages are fully functional
-- All data is dynamic from MySQL
+- All data is dynamic from PostgreSQL
 - All forms have validation
 - All operations provide feedback
 - Reports generate real-time data

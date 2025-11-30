@@ -55,161 +55,77 @@ This document provides a complete deployment guide for the Student Academic Mana
 
 ### Platform Comparison
 
-| Platform | PHP Support | MySQL Support | Always-On | Setup Difficulty | Selected |
-|----------|------------|---------------|-----------|------------------|----------|
-| **InfinityFree** | ✅ | ✅ | ✅ | Easy | ✅ **YES** |
-| Render.com | ✅ | ❌ (PostgreSQL) | ❌ (Spins down) | Medium | ❌ |
-| 000webhost | ✅ | ✅ | ✅ | Easy | Alternative |
+| Platform | PHP Support | Database Support | Always-On | Setup Difficulty | Selected |
+|----------|------------|------------------|-----------|------------------|----------|
+| **Render.com** | ✅ | ✅ (PostgreSQL) | ❌ (Spins down) | Medium | ✅ **YES** |
+| InfinityFree | ✅ | ✅ (MySQL) | ✅ | Easy | Alternative |
+| 000webhost | ✅ | ✅ (MySQL) | ✅ | Easy | Alternative |
 | Vercel/Netlify | ❌ | ❌ | ✅ | Hard | ❌ |
 
 ---
 
 ## 3. Deployment Steps
 
-### Step 1: Account Creation
+### Step 1: Create PostgreSQL Database on Render
 
-1. **Visit:** https://www.infinityfree.net
-2. **Sign Up:** Create free account
-3. **Verify Email:** Confirm email address
-4. **Create Hosting Account:**
-   - Click "Create a Free Hosting Account"
-   - Enter subdomain (e.g., `sams` or `learningsystem`)
-   - Select domain extension (e.g., `infinityfree.app` or `epizy.com`)
-   - Click "Check Availability"
-   - Complete account creation
-
-**Result:** Hosting account created with subdomain
-
----
-
-### Step 2: Database Setup
-
-1. **Access Dashboard:**
-   - Log in to InfinityFree control panel
-   - Navigate to "Hosting Accounts"
-   - Select your account
-
-2. **Create MySQL Database:**
-   - Go to "MySQL Databases" section
+1. **Visit:** https://dashboard.render.com
+2. **Sign Up/Login:** Create free account or log in
+3. **Create Database:**
+   - Click "New +" → "PostgreSQL"
+   - Name: `sams-db`
+   - Database: `sams_db`
+   - Region: `Oregon (US West)` (or your preferred region)
+   - PostgreSQL Version: `18`
+   - Plan: **Free**
    - Click "Create Database"
-   - Database Name: `sams_db`
-   - Set database password
-   - Click "Create"
 
-3. **Note Database Credentials:**
-   - Database Host: `sqlXXX.epizy.com` (provided)
-   - Database Username: (provided)
-   - Database Password: (your chosen password)
-   - Database Name: `sams_db`
+4. **Wait for Creation:**
+   - Wait 2-3 minutes for database to be created
+   - Note the **Internal Database URL** (you'll need this)
 
-**Result:** MySQL database created and ready
+**Result:** PostgreSQL database created on Render
 
 ---
 
-### Step 3: Configure Project Files
+### Step 2: Create Web Service on Render
 
-#### 3.1 Update Database Configuration
+1. **Create Web Service:**
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository: `petero-codes/leraningmanagement-system`
+   - Name: `leraningmanagement-system` (or your preferred name)
 
-**File:** `config/db.php`
+2. **Configure Service:**
+   - **Environment:** Docker
+   - **Build Command:** (leave empty - Docker handles this)
+   - **Start Command:** (leave empty - Docker handles this)
+   - **Plan:** Free
 
-```php
-// Update with InfinityFree database credentials
-define('DB_HOST', 'sqlXXX.epizy.com');  // Your database host
-define('DB_USER', 'epiz_XXXXXXX');      // Your database username
-define('DB_PASS', 'your_password');     // Your database password
-define('DB_NAME', 'epiz_XXXXXXX_sams_db'); // Your database name
-```
+3. **Add Environment Variables:**
+   - Click "Environment" tab
+   - Add `DATABASE_URL`: (paste Internal Database URL from PostgreSQL)
+   - Add `BASE_URL`: `https://leraningmanagement-system.onrender.com/`
+   - Save
 
-#### 3.2 Update Base URL
+4. **Deploy:**
+   - Click "Create Web Service"
+   - Render will automatically build and deploy
 
-**File:** `config/config.php`
-
-```php
-// Update with your live domain
-define('BASE_URL', 'https://your-subdomain.infinityfree.app/');
-// Or
-define('BASE_URL', 'https://your-subdomain.epizy.com/');
-```
-
-**Result:** Configuration files updated for production
+**Result:** Web service created and deploying
 
 ---
 
-### Step 4: Upload Project Files
+### Step 3: Import Database Schema
 
-#### 4.1 Install FileZilla
+1. **Get Database Connection:**
+   - Go to your PostgreSQL database on Render
+   - Copy the **Internal Database URL**
 
-1. Download FileZilla: https://filezilla-project.org/
-2. Install on your computer
+2. **Import Schema:**
+   - Use Render's PostgreSQL web interface (psql)
+   - Or use a local PostgreSQL client
+   - Import `config/database.postgresql.sql`
 
-#### 4.2 Get FTP Credentials
-
-1. In InfinityFree dashboard
-2. Go to "FTP Accounts" or "File Manager"
-3. Note FTP details:
-   - **FTP Host:** `ftpupload.net`
-   - **FTP Username:** (provided)
-   - **FTP Password:** (provided)
-   - **Port:** `21`
-
-#### 4.3 Connect and Upload
-
-1. **Open FileZilla**
-2. **Connect:**
-   - Host: `ftpupload.net`
-   - Username: (from dashboard)
-   - Password: (from dashboard)
-   - Port: `21`
-   - Click "Quickconnect"
-
-3. **Navigate:**
-   - Remote site: Go to `htdocs` folder
-   - Local site: Navigate to your project folder
-
-4. **Upload Files:**
-   - Select all project files and folders
-   - Drag and drop to `htdocs` folder
-   - Wait for upload to complete
-
-**Uploaded Structure:**
-```
-/htdocs
-   /assets
-   /config
-   /includes
-   /php
-   /reports
-   /views
-   /docs
-   index.php
-   login.php
-   dashboard.php
-   register.php
-   (all other files)
-```
-
-**Result:** All project files uploaded to server
-
----
-
-### Step 5: Import Database
-
-1. **Access phpMyAdmin:**
-   - In InfinityFree dashboard
-   - Click "phpMyAdmin" link
-   - Or go to: `https://phpmyadmin.epizy.com`
-
-2. **Select Database:**
-   - Click on your database (`sams_db` or `epiz_XXXXXXX_sams_db`)
-
-3. **Import SQL File:**
-   - Click "Import" tab
-   - Click "Choose File"
-   - Select `config/database.sql` from your local project
-   - Click "Go"
-   - Wait for import to complete
-
-4. **Verify Import:**
+3. **Verify Import:**
    - Check that 4 tables are created:
      - `users`
      - `students`
@@ -221,32 +137,12 @@ define('BASE_URL', 'https://your-subdomain.epizy.com/');
 
 ---
 
-### Step 6: Fix Admin Password
-
-1. **In phpMyAdmin:**
-   - Select `sams_db` database
-   - Click `users` table
-   - Click "SQL" tab
-
-2. **Run SQL Query:**
-   ```sql
-   UPDATE users 
-   SET password = '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy' 
-   WHERE username = 'admin';
-   ```
-
-3. **Click "Go"**
-
-**Result:** Admin password set to `admin123`
-
----
-
-### Step 7: Verify Deployment
+### Step 4: Verify Deployment
 
 1. **Access Live Site:**
    - Open browser
-   - Go to: `https://your-subdomain.infinityfree.app/`
-   - Or: `https://your-subdomain.epizy.com/`
+   - Go to: `https://leraningmanagement-system.onrender.com/`
+   - Wait for first load (free tier spins down after inactivity)
 
 2. **Test Login:**
    - Username: `admin`
@@ -301,19 +197,19 @@ The GitHub repository includes:
    - Installation guides
    - Configuration examples
 
-### GitHub Deployment (Optional)
+### GitHub Deployment (Automatic)
 
-For automatic deployment from GitHub:
+Render automatically deploys from GitHub:
 
-1. **Connect Repository:**
-   - In InfinityFree, go to "Git Deployment" (if available)
-   - Connect GitHub repository
-   - Enable auto-deploy
+1. **Automatic Deployment:**
+   - Render watches your GitHub repository
+   - Every push to `main` branch triggers automatic deployment
+   - No manual upload needed
 
-2. **Manual Updates:**
-   - Make changes locally
-   - Commit and push to GitHub
-   - Upload updated files via FTP
+2. **Manual Deploy:**
+   - In Render dashboard, click "Manual Deploy"
+   - Select branch to deploy
+   - Click "Deploy"
 
 ---
 
@@ -322,15 +218,14 @@ For automatic deployment from GitHub:
 ### Production Environment Variables
 
 **Database Configuration:**
-- Host: `sqlXXX.epizy.com`
-- Username: `epiz_XXXXXXX`
-- Password: `[secure password]`
-- Database: `epiz_XXXXXXX_sams_db`
+- Connection: Via `DATABASE_URL` environment variable
+- Format: `postgresql://user:password@host:port/database`
+- Automatically provided by Render PostgreSQL service
 
 **Application Configuration:**
-- Base URL: `https://your-subdomain.infinityfree.app/`
-- PHP Version: 7.4+
-- MySQL Version: 5.7+
+- Base URL: `https://leraningmanagement-system.onrender.com/`
+- PHP Version: 8.3 (via Docker)
+- PostgreSQL Version: 18
 
 ### Security Considerations
 
@@ -357,10 +252,10 @@ For automatic deployment from GitHub:
 **Symptoms:** "Database connection failed" error
 
 **Solutions:**
-- Verify database credentials in `config/db.php`
-- Check database host is correct
-- Ensure database exists in InfinityFree
-- Verify MySQL service is running
+- Verify `DATABASE_URL` environment variable is set correctly
+- Check PostgreSQL database is running on Render
+- Ensure Internal Database URL is used (not external)
+- Verify database schema is imported
 
 #### Issue 2: Page Not Found (404)
 **Symptoms:** Blank page or 404 error
@@ -400,14 +295,13 @@ For automatic deployment from GitHub:
 - [ ] Documentation complete
 
 ### Deployment Steps
-- [ ] InfinityFree account created
-- [ ] Database created
-- [ ] FTP credentials obtained
-- [ ] Files uploaded to server
-- [ ] Database credentials updated
-- [ ] BASE_URL updated
-- [ ] Database imported
-- [ ] Admin password fixed
+- [ ] Render account created
+- [ ] PostgreSQL database created
+- [ ] Web service created
+- [ ] Environment variables set (DATABASE_URL, BASE_URL)
+- [ ] GitHub repository connected
+- [ ] Database schema imported
+- [ ] Deployment successful
 
 ### Post-Deployment
 - [ ] Live site accessible
@@ -421,7 +315,24 @@ For automatic deployment from GitHub:
 
 ## 8. Alternative Deployment Options
 
-### Option 1: 000webhost
+### Option 1: InfinityFree
+
+**Steps:**
+1. Sign up at https://www.infinityfree.net
+2. Create hosting account
+3. Upload files via FTP to `htdocs`
+4. Create MySQL database
+5. Import MySQL schema via phpMyAdmin
+6. Update configuration files
+
+**Advantages:**
+- Free MySQL
+- Always-on
+- Easy setup
+
+**Note:** Requires MySQL schema (not PostgreSQL)
+
+### Option 2: 000webhost
 
 **Steps:**
 1. Sign up at https://www.000webhost.com
@@ -436,25 +347,7 @@ For automatic deployment from GitHub:
 - Always-on
 - Easy setup
 
-### Option 2: Render.com
-
-**Steps:**
-1. Sign up at https://render.com
-2. Create PostgreSQL database
-3. Convert MySQL schema to PostgreSQL
-4. Create Web Service
-5. Connect GitHub repository
-6. Set environment variables
-7. Deploy
-
-**Advantages:**
-- Modern platform
-- Auto-deploy from GitHub
-- Free SSL
-
-**Disadvantages:**
-- Requires PostgreSQL conversion
-- Free tier spins down
+**Note:** Requires MySQL schema (not PostgreSQL)
 
 ---
 
@@ -473,19 +366,17 @@ For automatic deployment from GitHub:
    git push
    ```
 
-3. **Upload to Server:**
-   - Connect via FTP
-   - Upload changed files
-   - Test on live site
+3. **Automatic Deployment:**
+   - Render automatically detects GitHub push
+   - Builds and deploys automatically
+   - No manual upload needed
 
 ### Database Backups
 
-1. **Via phpMyAdmin:**
-   - Select database
-   - Click "Export"
-   - Choose "Quick" or "Custom"
-   - Click "Go"
-   - Save SQL file
+1. **Via Render Dashboard:**
+   - Go to PostgreSQL database
+   - Use "Backup" feature (if available)
+   - Or use `pg_dump` command
 
 2. **Regular Backups:**
    - Backup weekly or before major changes
@@ -504,12 +395,13 @@ For automatic deployment from GitHub:
 - Complete documentation included
 
 ### Live Application
-**URL:** `https://[your-subdomain].infinityfree.app/`
+**URL:** `https://leraningmanagement-system.onrender.com/`
 
 **Access:**
 - Public access
 - Login required for features
 - Default credentials: admin / admin123
+- Note: Free tier spins down after inactivity (first load may take 30-60 seconds)
 
 ### Documentation
 **Location:** `/docs` folder in repository
@@ -525,39 +417,40 @@ For automatic deployment from GitHub:
 
 ## 11. Screenshots of Deployment
 
-### Screenshot 1: InfinityFree Dashboard
-**Description:** Hosting account dashboard showing active services
+### Screenshot 1: Render Dashboard
+**Description:** Render dashboard showing PostgreSQL database and web service
 
 ### Screenshot 2: Database Configuration
-**Description:** MySQL database created in InfinityFree
+**Description:** PostgreSQL database created on Render with connection details
 
-### Screenshot 3: File Upload (FileZilla)
-**Description:** Project files being uploaded via FTP
+### Screenshot 3: Web Service Configuration
+**Description:** Web service settings showing Docker environment and environment variables
 
-### Screenshot 4: phpMyAdmin Import
-**Description:** Database schema being imported
+### Screenshot 4: GitHub Integration
+**Description:** GitHub repository connected for automatic deployment
 
 ### Screenshot 5: Live Application
-**Description:** Application running on live domain
+**Description:** Application running on Render domain
 
-### Screenshot 6: GitHub Repository
-**Description:** Repository showing all project files
+### Screenshot 6: Environment Variables
+**Description:** DATABASE_URL and BASE_URL configured in Render
 
 ---
 
 ## 12. Conclusion
 
-The Student Academic Management System has been successfully deployed to InfinityFree, providing:
+The Student Academic Management System has been successfully deployed to Render.com, providing:
 
-- ✅ Free hosting with PHP/MySQL support
-- ✅ Always-on service for reliable access
+- ✅ Free hosting with PHP/PostgreSQL support
+- ✅ Automatic deployment from GitHub
+- ✅ Modern Docker-based deployment
 - ✅ Complete source code on GitHub
 - ✅ Full documentation and deployment guide
 - ✅ Working live application
 
 **Deployment Status:** ✅ **COMPLETE**
 
-**Live Link:** `https://[your-subdomain].infinityfree.app/`  
+**Live Link:** `https://leraningmanagement-system.onrender.com/`  
 **GitHub Link:** https://github.com/petero-codes/leraningmanagement-system.git
 
 ---

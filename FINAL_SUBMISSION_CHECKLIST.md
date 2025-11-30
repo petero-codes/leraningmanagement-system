@@ -5,15 +5,16 @@
 ### 1. Deployment & Hosting ✅
 
 #### Free Hosting Service
-- [x] Platform selected: **InfinityFree**
-- [ ] Account created (in progress - fix subdomain)
-- [ ] Files uploaded
-- [ ] Database configured
+- [x] Platform selected: **Render.com**
+- [ ] PostgreSQL database created
+- [ ] Web service created
+- [ ] Environment variables configured
+- [ ] Database schema imported
 - [ ] Live link obtained
 - [ ] Live link tested and working
 
-**Live Link:** `https://[your-subdomain].infinityfree.app/`  
-*(Update after deployment)*
+**Live Link:** `https://leraningmanagement-system.onrender.com/`  
+*(Update with your actual Render URL after deployment)*
 
 #### GitHub Repository
 - [x] Repository created: https://github.com/petero-codes/leraningmanagement-system.git
@@ -53,7 +54,7 @@
 
 #### Methodology and System Analysis
 - [x] Development approach explained
-- [x] Technologies listed (HTML, CSS, JS, PHP, MySQL)
+- [x] Technologies listed (HTML, CSS, JS, PHP, PostgreSQL)
 - [x] Client-server architecture described
 - [x] Database plan included
 - [x] System modules listed
@@ -147,15 +148,15 @@
 - [x] Form processing
 - [x] External modular files (header.php, footer.php, db.php, config.php)
 - [x] Cookies and sessions (login/logout)
-- [x] CRUD operations with MySQL
+- [x] CRUD operations with PostgreSQL
 - [x] Error handling
 - [x] Secure practices (prepared statements)
 
-#### Database (MySQL)
+#### Database (PostgreSQL)
 - [x] Connection script
 - [x] CRUD PHP files
 - [x] 3 reports (Student Summary, Enrollment Stats, Performance)
-- [x] SQL scripts for table creation
+- [x] SQL scripts for table creation (PostgreSQL compatible)
 
 ---
 
@@ -163,13 +164,13 @@
 
 ### Immediate Actions Needed
 
-1. **Complete InfinityFree Deployment:**
-   - [ ] Fix subdomain (remove space: use `sams` or `learningsystem`)
-   - [ ] Create hosting account
-   - [ ] Upload all files via FTP
-   - [ ] Configure database
-   - [ ] Import database schema
-   - [ ] Fix admin password
+1. **Complete Render Deployment:**
+   - [ ] Create PostgreSQL database on Render
+   - [ ] Create web service on Render
+   - [ ] Connect GitHub repository
+   - [ ] Set environment variables (DATABASE_URL, BASE_URL)
+   - [ ] Import PostgreSQL database schema
+   - [ ] Wait for deployment to complete
    - [ ] Get live URL
    - [ ] Test all features
 
@@ -208,7 +209,8 @@
 - `PROJECT_SUMMARY.md` - Project overview
 - `PROJECT_REQUIREMENTS_CHECKLIST.md` - Requirements checklist
 - `DEPLOYMENT_CHECKLIST.md` - Deployment checklist
-- `INFINITYFREE_DEPLOYMENT_GUIDE.md` - Step-by-step guide
+- `RENDER_DEPLOYMENT_STEPS.md` - Step-by-step guide
+- `RENDER_SETUP.md` - Quick setup guide
 
 ---
 
@@ -224,7 +226,7 @@
 - [x] User manual complete
 
 ### In Progress 🔄
-- [ ] InfinityFree deployment (fix subdomain, then complete)
+- [ ] Render deployment (create database and web service)
 - [ ] Get live URL
 - [ ] Add screenshots
 
@@ -238,11 +240,13 @@
 
 ## 🎯 Next Action
 
-**Complete InfinityFree deployment by:**
-1. Fixing subdomain name (remove space)
-2. Following `INFINITYFREE_DEPLOYMENT_GUIDE.md`
-3. Getting live URL
-4. Updating documentation with live link
+**Complete Render deployment by:**
+1. Creating PostgreSQL database on Render
+2. Creating web service on Render
+3. Setting environment variables
+4. Following `RENDER_DEPLOYMENT_STEPS.md` or `RENDER_SETUP.md`
+5. Getting live URL
+6. Updating documentation with live link
 
 **Then your project will be 100% ready for submission!** 🚀
 

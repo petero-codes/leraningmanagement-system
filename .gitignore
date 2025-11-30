@@ -22,3 +22,7 @@ Thumbs.db
 
 # Database credentials (local)
 config/db.local.php
+
+# Composer
+vendor/
+# composer.lock should be committed to ensure consistent dependency versions

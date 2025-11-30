@@ -55,7 +55,7 @@ Submitted in partial fulfillment of the requirements for the degree of
 
 ### Executive Summary
 
-The Student Academic Management System (SAMS) is a comprehensive web-based application designed to streamline student record management, course administration, and academic reporting for educational institutions. Built using PHP, MySQL, HTML, CSS, and JavaScript, the system provides a secure, efficient, and user-friendly platform for managing academic operations.
+The Student Academic Management System (SAMS) is a comprehensive web-based application designed to streamline student record management, course administration, and academic reporting for educational institutions. Built using PHP, PostgreSQL, HTML, CSS, and JavaScript, the system provides a secure, efficient, and user-friendly platform for managing academic operations.
 
 ### Problem Statement
 
@@ -176,7 +176,7 @@ To develop a comprehensive, web-based Student Academic Management System that au
 
 **Backend:**
 - PHP 7.4+ for server-side logic
-- MySQL 5.7+ for database management
+- PostgreSQL 18+ for database management
 - PDO for database operations
 
 **Architecture:**
@@ -426,7 +426,7 @@ To develop a comprehensive, web-based Student Academic Management System that au
 
 **Server Requirements:**
 - PHP 7.4 or higher
-- MySQL 5.7 or higher
+- PostgreSQL 18 or higher
 - Apache/Nginx web server
 - Modern web browser
 
@@ -442,7 +442,7 @@ To develop a comprehensive, web-based Student Academic Management System that au
    - Download all project files to your local machine
 
 2. **Set Up Database**
-   - Create MySQL database
+   - Create PostgreSQL database
    - Import `config/database.sql` file
    - Update database credentials in `config/db.php`
 
@@ -840,13 +840,13 @@ Thumbs.db
 ### Deployment Process Summary
 
 1. **Account Creation**
-   - Created free hosting account on InfinityFree
-   - Selected subdomain: `[your-subdomain]`
-   - Domain extension: `infinityfree.app` or `epizy.com`
+   - Created free hosting account on Render.com
+   - Created PostgreSQL database service
+   - Created web service (Docker-based)
 
 2. **Database Setup**
-   - Created MySQL database: `sams_db`
-   - Obtained database credentials (host, username, password)
+   - Created PostgreSQL database: `sams_db`
+   - Obtained Internal Database URL from Render
    - Database host: `sqlXXX.epizy.com`
 
 3. **File Upload**
@@ -860,8 +860,8 @@ Thumbs.db
    - Re-uploaded configuration files
 
 5. **Database Import**
-   - Accessed phpMyAdmin via InfinityFree dashboard
-   - Imported `config/database.sql` file
+   - Imported database schema via Render PostgreSQL interface
+   - Imported `config/database.postgresql.sql` file
    - Verified all tables and sample data created
 
 6. **Password Configuration**
@@ -876,7 +876,7 @@ Thumbs.db
 
 ### Deployment Screenshots
 
-**Screenshot 1:** InfinityFree Dashboard
+**Screenshot 1:** Render Dashboard
 - Shows hosting account active status
 - Database creation interface
 
@@ -899,8 +899,8 @@ Thumbs.db
 ### Alternative Deployment Options
 
 **000webhost:**
-- Similar to InfinityFree
-- Free MySQL hosting
+- Similar to Render.com
+- Free PostgreSQL hosting
 - Easy FTP upload
 - Always-on service
 
@@ -924,7 +924,8 @@ Thumbs.db
 
 For complete step-by-step instructions, see:
 - **`docs/06_DEPLOYMENT_GUIDE_ACADEMIC.md`** - Complete academic deployment guide
-- **`INFINITYFREE_DEPLOYMENT_GUIDE.md`** - InfinityFree specific guide
+- **`RENDER_DEPLOYMENT_STEPS.md`** - Render.com specific guide
+- **`RENDER_SETUP.md`** - Quick Render setup guide
 - **`docs/03_DEPLOYMENT_GUIDE.md`** - General deployment options
 
 ---
@@ -997,7 +998,7 @@ The system is ready for deployment and can be extended with additional features 
 ## References
 
 1. PHP Documentation: https://www.php.net/docs.php
-2. MySQL Documentation: https://dev.mysql.com/doc/
+2. PostgreSQL Documentation: https://www.postgresql.org/docs/
 3. PDO Documentation: https://www.php.net/manual/en/book.pdo.php
 4. HTML5 Specification: https://html.spec.whatwg.org/
 5. CSS3 Specification: https://www.w3.org/Style/CSS/
